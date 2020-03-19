@@ -49,11 +49,6 @@ namespace notification_handler
                 endpoints.MapControllers();
             });
 
-            //app.UseHangfireServer();
-
-            //app.UseHangfireDashboard();
-
-            //RecurringJob.AddOrUpdate<RabbitListener>(x => x.Register(), Cron.Minutely);
         }
     }
 

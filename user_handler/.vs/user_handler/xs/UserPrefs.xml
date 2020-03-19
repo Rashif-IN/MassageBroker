@@ -1,15 +1,13 @@
 ﻿<Properties StartupConfiguration="{2D91A3EF-00E1-467E-A51D-9C81D929EDAD}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="../notification_handler/notification_handler/UseCase/Notification/Query/GetAll/Handler.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="user_handler/UseCase/User/Command/Post/Handler.cs">
     <Files>
-      <File FileName="../notification_handler/notification_handler/UseCase/Notification/Command/Post/Handler.cs" Line="56" Column="35" />
-      <File FileName="../notification_handler/notification_handler/Controllers/notif_controller.cs" Line="9" Column="25" />
+      <File FileName="../notification_handler/notification_handler/UseCase/Notification/Command/Post/Handler.cs" Line="62" Column="10" />
+      <File FileName="../notification_handler/notification_handler/Controllers/notif_controller.cs" Line="24" Column="80" />
       <File FileName="../notification_handler/notification_handler/appsettings.json" Line="17" Column="8" />
-      <File FileName="../notification_handler/notification_handler/Startup.cs" Line="27" Column="10" />
-      <File FileName="../notification_handler/notification_handler/rabit.cs" Line="26" Column="18" />
-      <File FileName="user_handler/UseCase/User/Command/Post/Handler.cs" Line="77" Column="13" NotebookId="1" />
+      <File FileName="../notification_handler/notification_handler/Startup.cs" Line="51" Column="1" />
+      <File FileName="../notification_handler/notification_handler/UseCase/Notification/Query/GetAll/Handler.cs" Line="1" Column="1" />
       <File FileName="user_handler/appsettings.json" Line="10" Column="25" NotebookId="1" />
-      <File FileName="user_handler/Controllers/user_controller.cs" Line="19" Column="10" NotebookId="1" />
-      <File FileName="../notification_handler/notification_handler/UseCase/Notification/Query/GetAll/Handler.cs" Line="22" Column="1" NotebookId="1" />
+      <File FileName="user_handler/UseCase/User/Command/Post/Handler.cs" Line="60" Column="1" NotebookId="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -17,31 +15,25 @@
           <Node name="user_handler" expanded="True">
             <Node name="notification_handler" expanded="True">
               <Node name="Controllers" expanded="True" />
-              <Node name="Model" expanded="True" />
-              <Node name="Properties" expanded="True" />
               <Node name="UseCase" expanded="True">
                 <Node name="Notification" expanded="True">
                   <Node name="Command" expanded="True">
                     <Node name="Post" expanded="True" />
                   </Node>
                   <Node name="Query" expanded="True">
-                    <Node name="GetAll" expanded="True">
-                      <Node name="Handler.cs" selected="True" />
-                    </Node>
+                    <Node name="GetAll" expanded="True" />
                   </Node>
-                </Node>
-                <Node name="Notification_logs" expanded="True">
-                  <Node name="Query" expanded="True" />
                 </Node>
               </Node>
             </Node>
             <Node name="user_handler" expanded="True">
               <Node name="Controllers" expanded="True" />
-              <Node name="Model" expanded="True" />
               <Node name="UseCase" expanded="True">
                 <Node name="User" expanded="True">
                   <Node name="Command" expanded="True">
-                    <Node name="Post" expanded="True" />
+                    <Node name="Post" expanded="True">
+                      <Node name="Handler.cs" selected="True" />
+                    </Node>
                   </Node>
                 </Node>
               </Node>
