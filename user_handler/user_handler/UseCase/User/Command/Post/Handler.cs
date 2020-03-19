@@ -7,6 +7,8 @@ using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
 using Newtonsoft.Json;
+using RabbitMQ.Client;
+using RabbitMQ.Client.Events;
 using user_handler.Model;
 
 namespace user_handler.UseCase.User.Command.Post
@@ -38,10 +40,10 @@ namespace user_handler.UseCase.User.Command.Post
             var client = new HttpClient();
             var command = new PostCommand()
             {
-                Title = "hello world",
+                Title = "hjfrhftcutcuc6ello rtyxdrtxdye4ty",
                 Message = "you think this is hello world, but it was me dio",
                 Type = "email",
-                From = 2,
+                From = 56,
                 Target = new List<TargetCommand>() { target }
             };
 
@@ -52,10 +54,38 @@ namespace user_handler.UseCase.User.Command.Post
             { data = attributes };
 
             var jsonObj = JsonConvert.SerializeObject(httpContent);
-            var content = new StringContent(jsonObj, Encoding.UTF8, "application/json");
-            await client.PostAsync("http://localhost:2000/notification",content);
 
+            //var content = new StringContent(jsonObj, Encoding.UTF8, "application/json");
+            //await client.PostAsync("http://localhost:2000/notification",content);
 
+            var factory = new ConnectionFactory() { HostName = "localhost" };
+            using (var connection = factory.CreateConnection())
+            using (var channel = connection.CreateModel())
+            {
+                //channel.ExchangeDeclare("userDataExchange", "fanout");
+                channel.QueueDeclare(queue: "userData", durable: true, exclusive: false, autoDelete: false, arguments: null);
+                var Body = Encoding.UTF8.GetBytes(jsonObj);
+                var properties = channel.CreateBasicProperties();
+                properties.Persistent = true;
+                channel.BasicPublish(exchange: "", routingKey: "userData",basicProperties: null,body: Body);
+                Console.WriteLine("User data has been forwarded");
+                Console.ReadLine();
+
+                var consumer = new EventingBasicConsumer(channel);
+                consumer.Received += async (model, ea) =>
+                {
+                    var body = ea.Body;
+                    var message = Encoding.UTF8.GetString(body);
+                    var content = new StringContent(message, Encoding.UTF8, "application/json");
+                    Console.WriteLine($"Processing data from queue");
+                    await client.PostAsync("http://localhost:2000/notification", content);
+
+                };
+                channel.BasicConsume(queue: "userData",
+                                     autoAck: true,
+                                     consumer: consumer);
+            }
+            Console.ReadLine(); 
             return new Dto
             {
                 message = "user posted",

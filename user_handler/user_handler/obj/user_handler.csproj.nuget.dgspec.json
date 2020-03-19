@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "/Users/user/Projects/RPI/user_handler/user_handler/user_handler.csproj": {}
+    "/Users/user/Projects/MsgBroker/user_handler/user_handler/user_handler.csproj": {}
   },
   "projects": {
-    "/Users/user/Projects/RPI/user_handler/user_handler/user_handler.csproj": {
+    "/Users/user/Projects/MsgBroker/user_handler/user_handler/user_handler.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/user/Projects/RPI/user_handler/user_handler/user_handler.csproj",
+        "projectUniqueName": "/Users/user/Projects/MsgBroker/user_handler/user_handler/user_handler.csproj",
         "projectName": "user_handler",
-        "projectPath": "/Users/user/Projects/RPI/user_handler/user_handler/user_handler.csproj",
+        "projectPath": "/Users/user/Projects/MsgBroker/user_handler/user_handler/user_handler.csproj",
         "packagesPath": "/Users/user/.nuget/packages/",
-        "outputPath": "/Users/user/Projects/RPI/user_handler/user_handler/obj/",
+        "outputPath": "/Users/user/Projects/MsgBroker/user_handler/user_handler/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/user/.config/NuGet/NuGet.Config"
+          "/Users/user/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
@@ -65,6 +65,10 @@
             "Npgsql.EntityFrameworkCore.PostgreSQL": {
               "target": "Package",
               "version": "[3.1.2, )"
+            },
+            "RabbitMQ.Client": {
+              "target": "Package",
+              "version": "[5.1.2, )"
             }
           },
           "imports": [

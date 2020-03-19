@@ -26,3 +26,4 @@
 /Users/user/Projects/RPI/user_handler/bin/Debug/notification_handler.dll
 /Users/user/Projects/RPI/user_handler/bin/Debug/Newtonsoft.Json.dll
 /Users/user/Projects/RPI/user_handler/bin/Debug/notification_handler.pdb
+/Users/user/Projects/MsgBroker/user_handler/obj/Debug/docker-compose.dcproj.CoreCompileInputs.cache

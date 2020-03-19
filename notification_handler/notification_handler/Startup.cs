@@ -1,5 +1,6 @@
 
 using System.Reflection;
+using Hangfire;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -8,6 +9,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using notification_handler.UseCase.Notification.Query.Get;
+
+
 namespace notification_handler
 {
     public class Startup
@@ -45,6 +48,14 @@ namespace notification_handler
             {
                 endpoints.MapControllers();
             });
+
+            //app.UseHangfireServer();
+
+            //app.UseHangfireDashboard();
+
+            //RecurringJob.AddOrUpdate<RabbitListener>(x => x.Register(), Cron.Minutely);
         }
     }
+
+    
 }

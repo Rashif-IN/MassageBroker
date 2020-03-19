@@ -16,8 +16,7 @@ namespace user_handler.Controllers
         {
             meciater = mediatr;
         }
-
-        
+         
         [HttpGet]
         public async Task<ActionResult<UseCase.User.Query.GetAll.Dto>> Get()
         {

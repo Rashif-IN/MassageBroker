@@ -16,6 +16,8 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
+    <PackageReference Include="RabbitMQ.Client" Version="5.1.2" />
+    <PackageReference Include="Hangfire" Version="1.7.9" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="UseCase\Notification_logs\Query\" />
