@@ -1,0 +1,15 @@
+version: '3.4'
+
+services:
+  user_handler:
+    image: ${DOCKER_REGISTRY-}userhandler
+    build:
+      context: .
+      dockerfile: user_handler/Dockerfile
+
+  notification_handler:
+    image: ${DOCKER_REGISTRY-}notificationhandler
+    build:
+      context: .
+      dockerfile: ../notification_handler/notification_handler/Dockerfile
+

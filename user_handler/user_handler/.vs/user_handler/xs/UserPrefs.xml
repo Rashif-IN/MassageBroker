@@ -1,0 +1,39 @@
+﻿<Properties StartupConfiguration="{A8788C9F-8895-4148-ABC9-16F8DB660505}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="UseCase/User/Command/Post/Handler.cs">
+    <Files>
+      <File FileName="Dockerfile" Line="1" Column="1" />
+      <File FileName="Controllers/user_controller.cs" Line="1" Column="1" />
+      <File FileName="UseCase/User/Command/Post/Handler.cs" Line="56" Column="71" />
+      <File FileName="Model/mail_model.cs" Line="6" Column="18" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="user_handler" expanded="True">
+            <Node name="user_handler" expanded="True">
+              <Node name="Controllers" expanded="True" />
+              <Node name="Migrations" expanded="True" />
+              <Node name="Model" expanded="True" />
+              <Node name="UseCase" expanded="True">
+                <Node name="User" expanded="True">
+                  <Node name="Command" expanded="True">
+                    <Node name="Post" expanded="True">
+                      <Node name="Handler.cs" selected="True" />
+                    </Node>
+                  </Node>
+                </Node>
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.ItemProperties.user__handler PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>

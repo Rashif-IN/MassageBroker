@@ -1,0 +1,41 @@
+﻿<Properties StartupConfiguration="{A2BE738C-D04B-4379-9C42-E00B7B3CB541}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="notification_handler/Controllers/notif_controller.cs">
+    <Files>
+      <File FileName="notification_handler/UseCase/Notification/Command/Post/Handler.cs" Line="25" Column="1" />
+      <File FileName="notification_handler/appsettings.json" Line="21" Column="1" />
+      <File FileName="notification_handler/Controllers/notif_controller.cs" Line="1" Column="1" />
+      <File FileName="notification_handler/Model/notif_model.cs" Line="13" Column="1" NotebookId="1" />
+      <File FileName="notification_handler/Model/notif_logs_model.cs" NotebookId="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="notification_handler" expanded="True">
+            <Node name="notification_handler" expanded="True">
+              <Node name="Dependencies" expanded="True" />
+              <Node name="Controllers" expanded="True" />
+              <Node name="Migrations" expanded="True" />
+              <Node name="Model" expanded="True" />
+              <Node name="UseCase" expanded="True">
+                <Node name="Notification" expanded="True">
+                  <Node name="Command" expanded="True">
+                    <Node name="Post" expanded="True">
+                      <Node name="Command.cs" selected="True" />
+                    </Node>
+                  </Node>
+                </Node>
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.ItemProperties.notification__handler FirstBuild="True" PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>

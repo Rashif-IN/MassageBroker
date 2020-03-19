@@ -1,0 +1,49 @@
+version: '3.4'
+
+services:
+  notification_handler:
+    image: notificationhandler:dev
+    build:
+      target: base
+      labels:
+        com.microsoft.created-by: "visual-studio"
+        com.microsoft.visual-studio.project-name: "notification_handler"
+    environment:
+      - DOTNET_USE_POLLING_FILE_WATCHER=1
+      - NUGET_FALLBACK_PACKAGES=
+    volumes:
+      - /Users/user/Projects/RPI/notification_handler/notification_handler:/app
+      - /Users/user/Projects/RPI/user_handler:/src
+      - /Users/user/vsdbg/vs2017u5:/remote_debugger:rw
+      - /Users/user/.nuget/packages/:/root/.nuget/packages:ro
+
+    entrypoint: tail -f /dev/null
+    labels:
+      com.microsoft.visualstudio.debuggee.program: "dotnet"
+      com.microsoft.visualstudio.debuggee.arguments: " --additionalProbingPath /root/.nuget/packages  \"bin/Debug/netcoreapp3.1/notification_handler.dll\""
+      com.microsoft.visualstudio.debuggee.workingdirectory: "/app"
+      com.microsoft.visualstudio.debuggee.killprogram: "/bin/sh -c \"if PID=$$(pidof dotnet); then kill $$PID; fi\""
+    tty: true
+  user_handler:
+    image: userhandler:dev
+    build:
+      target: build
+      labels:
+        com.microsoft.created-by: "visual-studio"
+        com.microsoft.visual-studio.project-name: "user_handler"
+    environment:
+      - DOTNET_USE_POLLING_FILE_WATCHER=1
+      - NUGET_FALLBACK_PACKAGES=
+    volumes:
+      - /Users/user/Projects/RPI/user_handler/user_handler:/app
+      - /Users/user/Projects/RPI/user_handler:/src
+      - /Users/user/vsdbg/vs2017u5:/remote_debugger:rw
+      - /Users/user/.nuget/packages/:/root/.nuget/packages:ro
+
+    entrypoint: tail -f /dev/null
+    labels:
+      com.microsoft.visualstudio.debuggee.program: "dotnet"
+      com.microsoft.visualstudio.debuggee.arguments: " --additionalProbingPath /root/.nuget/packages  \"bin/Debug/netcoreapp3.1/user_handler.dll\""
+      com.microsoft.visualstudio.debuggee.workingdirectory: "/app"
+      com.microsoft.visualstudio.debuggee.killprogram: "/bin/sh -c \"if PID=$$(pidof dotnet); then kill $$PID; fi\""
+    tty: true
