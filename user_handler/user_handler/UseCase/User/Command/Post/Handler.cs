@@ -71,7 +71,33 @@ namespace user_handler.UseCase.User.Command.Post
                 Console.WriteLine("User data has been forwarded");
                 Console.ReadLine();
 
-                var consumer = new EventingBasicConsumer(channel);
+                //var consumer = new EventingBasicConsumer(channel);
+                //consumer.Received += async (model, ea) =>
+                //{
+                //    var body = ea.Body;
+                //    var message = Encoding.UTF8.GetString(body);
+                //    var content = new StringContent(message, Encoding.UTF8, "application/json");
+                //    Console.WriteLine($"Processing data from queue");
+                //    await client.PostAsync("http://localhost:2000/notification", content);
+
+                //};
+                //channel.BasicConsume(queue: "userData",
+                //                     autoAck: true,
+                //                     consumer: consumer);
+            }
+            Console.ReadLine();
+
+            var _client = new HttpClient();
+            var _factory = new ConnectionFactory() { HostName = "localhost" };
+            using (var _connection = factory.CreateConnection())
+            using (var _channel = _connection.CreateModel())
+            {
+                _channel.ExchangeDeclare("userDataExchange", "fanout");
+
+                var queueName = _channel.QueueDeclare();
+                _channel.QueueBind(queueName, "userDataExchange", string.Empty);
+
+                var consumer = new EventingBasicConsumer(_channel);
                 consumer.Received += async (model, ea) =>
                 {
                     var body = ea.Body;
@@ -81,11 +107,13 @@ namespace user_handler.UseCase.User.Command.Post
                     await client.PostAsync("http://localhost:2000/notification", content);
 
                 };
-                channel.BasicConsume(queue: "userData",
+                _channel.BasicConsume(queue: "userData",
                                      autoAck: true,
                                      consumer: consumer);
+                Console.ReadLine();
             }
-            Console.ReadLine(); 
+
+
             return new Dto
             {
                 message = "user posted",
