@@ -11,32 +11,33 @@ namespace notification_handler
     {
         public void Register()
         {
-            var client = new HttpClient();
-            var factory = new ConnectionFactory() { HostName = "some-rabbit" };
-            using (var connection = factory.CreateConnection())
-            using (var channel = connection.CreateModel())
+            //receiver
+            var _client = new HttpClient();
+            var _factory = new ConnectionFactory() { HostName = "localhost" };
+            using (var _connection = _factory.CreateConnection())
+            using (var _channel = _connection.CreateModel())
             {
-                channel.ExchangeDeclare("userDataExchange", "fanout");
+                _channel.ExchangeDeclare("userDataExchange", "fanout");
 
-                var queueName = channel.QueueDeclare();
-                channel.QueueBind(queueName, "userDataExchange", string.Empty);
+                var queueName = _channel.QueueDeclare();
+                _channel.QueueBind(queueName, "userDataExchange", string.Empty);
 
-                var consumer = new EventingBasicConsumer(channel);
+                var consumer = new EventingBasicConsumer(_channel);
                 consumer.Received += async (model, ea) =>
                 {
                     var body = ea.Body;
                     var message = Encoding.UTF8.GetString(body);
                     var content = new StringContent(message, Encoding.UTF8, "application/json");
                     Console.WriteLine($"Processing data from queue");
-                    await client.PostAsync("http://container-notif:2000/notification", content);
+                    await _client.PostAsync("http://localhost:2000/notification", content);
 
                 };
-                channel.BasicConsume(queue: "userData",
+                _channel.BasicConsume(queue: "userData",
                                      autoAck: true,
                                      consumer: consumer);
-
-                Thread.Sleep(10000);
+                Console.ReadLine();
             }
         }
+        }
     }
-}
+

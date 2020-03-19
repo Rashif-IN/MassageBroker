@@ -58,60 +58,23 @@ namespace user_handler.UseCase.User.Command.Post
             //var content = new StringContent(jsonObj, Encoding.UTF8, "application/json");
             //await client.PostAsync("http://localhost:2000/notification",content);
 
+            //sender
             var factory = new ConnectionFactory() { HostName = "localhost" };
             using (var connection = factory.CreateConnection())
             using (var channel = connection.CreateModel())
             {
-                //channel.ExchangeDeclare("userDataExchange", "fanout");
-                channel.QueueDeclare(queue: "userData", durable: true, exclusive: false, autoDelete: false, arguments: null);
+                channel.ExchangeDeclare("userDataExchange", "fanout");
+                //channel.QueueDeclare(queue: "userData", durable: true, exclusive: false, autoDelete: false, arguments: null);
                 var Body = Encoding.UTF8.GetBytes(jsonObj);
                 var properties = channel.CreateBasicProperties();
                 properties.Persistent = true;
                 channel.BasicPublish(exchange: "", routingKey: "userData",basicProperties: null,body: Body);
                 Console.WriteLine("User data has been forwarded");
                 Console.ReadLine();
-
-                //var consumer = new EventingBasicConsumer(channel);
-                //consumer.Received += async (model, ea) =>
-                //{
-                //    var body = ea.Body;
-                //    var message = Encoding.UTF8.GetString(body);
-                //    var content = new StringContent(message, Encoding.UTF8, "application/json");
-                //    Console.WriteLine($"Processing data from queue");
-                //    await client.PostAsync("http://localhost:2000/notification", content);
-
-                //};
-                //channel.BasicConsume(queue: "userData",
-                //                     autoAck: true,
-                //                     consumer: consumer);
             }
             Console.ReadLine();
 
-            var _client = new HttpClient();
-            var _factory = new ConnectionFactory() { HostName = "localhost" };
-            using (var _connection = factory.CreateConnection())
-            using (var _channel = _connection.CreateModel())
-            {
-                _channel.ExchangeDeclare("userDataExchange", "fanout");
-
-                var queueName = _channel.QueueDeclare();
-                _channel.QueueBind(queueName, "userDataExchange", string.Empty);
-
-                var consumer = new EventingBasicConsumer(_channel);
-                consumer.Received += async (model, ea) =>
-                {
-                    var body = ea.Body;
-                    var message = Encoding.UTF8.GetString(body);
-                    var content = new StringContent(message, Encoding.UTF8, "application/json");
-                    Console.WriteLine($"Processing data from queue");
-                    await client.PostAsync("http://localhost:2000/notification", content);
-
-                };
-                _channel.BasicConsume(queue: "userData",
-                                     autoAck: true,
-                                     consumer: consumer);
-                Console.ReadLine();
-            }
+            
 
 
             return new Dto
